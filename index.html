@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demonstration</title>
+    </head>
+    <body>
+        todo list:
+        <ul>
+            <li>Replace the 4 nbsps in eval with proper css</li>
+            <li>Simulation</li>
+            <li>Plotter</li>
+        </ul>
+        <div id="app">
+            Current Tab: {{tabNames[tabId]}}<br>
+            <button @click="prevTab">Previous Tab</button>
+            <button @click="nextTab">Next Tab</button>
+            <keep-alive>
+                <sequence-tab v-if="tabId === 0"></sequence-tab>
+                <simulation-tab v-if="tabId === 1"></simulation-tab>
+                <plotting-tab v-if="tabId === 2"></plotting-tab>
+            </keep-alive>
+        </div>
+    </body>
+    <script src="javascripts/libraries/vue.js"></script>
+    <script src="javascripts/components/tabs.js"></script>
+    <script src="javascripts/index.js"></script>
+</html>
