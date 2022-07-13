@@ -3,10 +3,10 @@
 var app = new Vue({
     el: "#app",
     data: {
-        tabId: 7,
+        tabId: 0,
         tabNames: [
             "Introduction",
-            "Introduction to JS",
+            "Introduction to JavaScript",
             "Seeing Output",
             "Operators",
             "Functions",
@@ -14,7 +14,8 @@ var app = new Vue({
             "Function Exercise",
             "Sequences",
             "General Term",
-            "Final Exam"
+            "Final Exam",
+            "Wrap-up"
         ]
     },
     computed: {
@@ -24,15 +25,13 @@ var app = new Vue({
     },
     methods: {
         prevTab() {
-            this.tabId --;
-            if (this.tabId < 0) {
-                this.tabId = this.maxTabId;
+            if (this.tabId > 0) {
+                this.tabId --;
             }
         },
         nextTab() {
-            this.tabId ++;
-            if (this.tabId > this.maxTabId) {
-                this.tabId = 0;
+            if (this.tabId < this.maxTabId) {
+                this.tabId ++;
             }
         },
     }

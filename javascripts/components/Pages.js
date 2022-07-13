@@ -6,7 +6,7 @@ Vue.component("introduction-tab", {
         This course includes:
         <ul>
             <li>JavaScript Operators</li>
-            <li>Basic usage JavaScript Functions</li>
+            <li>Basic usage of JavaScript Functions</li>
             <li>Arithmetic and geometric sequence</li>
             <li>Finding terms of AS and GS</li>
         </ul>
@@ -16,7 +16,7 @@ Vue.component("introduction-tab", {
 Vue.component("introduction-js-tab", {
     template: 
     `<div>
-        What is javascript?<br>
+        What is JavaScript?<br>
         JavaScript is a programming language. It is primarily used in websites (alongside with HTML and CSS).<br><br>
         JavaScript programs consists of different data types that it can interact with. Here are three of the basic data types:<br>
         <table>
@@ -212,7 +212,7 @@ if (!failed) {
     template: 
     `<div>
         Let's review what we have learnt with a programming exercise:<br>
-        Create a function product() that calculates the product of two numbers. Some codes have been added at the end to verify your answers.
+        Create a function product(a, b) that calculates the product of two numbers. Some codes have been added at the end to verify your answers.
         <code-runner :input="fullcode">
             <textarea v-model="input" placeholder="// Enter code here..."></textarea>
             <pre>{{tester}}</pre>
@@ -252,7 +252,27 @@ Vue.component("general-term-tab", {
     template:
     `
     <div>
-        We can find the term for each type of sequence with some calculations!
+        We can find the term for each type of sequence with some calculations!<br><br>
+        Arithmetic Sequence:
+        Let's use 3, 7, 11, 15, 19... as an example, and try to find the 100th term.<br>
+        The first term is 3 and the common difference is 4.<br>
+        To find the 100th term, we can calculate how many gaps of common differences there are between 1st and 100th term instead of listing all numbers:<br>
+        There are 100 - 1 = 99 gaps between these two terms.<br>
+        Therefore, the 100th term is 3 + 99 * 4 = 399.<br>
+        We can also express this algebraically:<br>
+        Let the first term of a sequence be <code>a</code> and the common difference be <code>d</code>.<br>
+        Then, the n-th term is equal to <code>a + (n - 1) x d</code>.<br>
+        This is known as the general term of the sequence.<br><br><br>
+
+        Geometric Sequence:
+        Let's use 1, 2, 4, 8, 16... as an example, and try to find the 20th term.<br>
+        The first term is 1 and the common ratio is 2.<br>
+        Similarly, to find the 20th term, we can calculate the number of gaps.<br>
+        There are 19 gaps between 1st and 20th terms.<br>
+        Therefore, the 20th term is 1 x 2<sup>19</sup> = 524288.<br>
+        We can then express this algebraically:<br>
+        Let the first term of a sequence be <code>a</code> and the common ratio be <code>r</code>.<br>
+        Then, the n-th term (general term) is equal to <code>a x d<sup>(n - 1)</sup></code>.<br>
     </div>`
 })
 
@@ -265,9 +285,19 @@ Vue.component("sequence-exercise-tab", {
                 d: 0
             },
             input: "",
-            score: 0,
-            resultText: "",
-            success: false
+            tester: `let failed = false;
+for (let i = 1; i <= 100; i++) {
+    const expected = solution(i);
+    const actual = A(i);
+    if (expected !== actual) {
+        console.log(\`Failed at term n = \${i}! Expected: \${expected}, result: \${actual}\`);
+        failed = true;
+        break;
+    }
+}
+if (!failed) {
+    console.log("Success, all tests passed!")
+}`
         }
     },
     computed: {
@@ -278,11 +308,14 @@ Vue.component("sequence-exercise-tab", {
             }
             return `${list.join(", ")}, ...`
         },
+        fullcode() {
+            return `solution = window.database.sequenceSolution;${this.input};${this.tester}`
+        }
     },
     methods: {
         generateBaseStat() {
-            const seed = Math.floor(Math.random() * 3); // 0, 1, 2
-            if (seed <= 1) {
+            const seed = Math.floor(Math.random() * 2); // 0, 1
+            if (seed == 0) {
                 const a = Math.floor(Math.random() * 50);
                 const d = Math.floor(Math.random() * 20 + 1);
                 this.currentSequenceStat = {
@@ -299,6 +332,9 @@ Vue.component("sequence-exercise-tab", {
                     r: r
                 }
             }
+            window.database = {
+                sequenceSolution: this.calculate
+            }
         },
         calculate(term) {
             const stats = this.currentSequenceStat;
@@ -308,35 +344,8 @@ Vue.component("sequence-exercise-tab", {
                 return stats.a * (stats.r ** (term - 1));
             }
         },
-        verify() {
-            const tester = 
-            `
-            for (let i = 1; i <= 100; i++) {
-                const expected = this.calculate(i);
-                const actual = testee(i);
-                if (expected !== actual) {
-                    this.resultText = \`Failed at term n = \${i}! Expected: \${expected}, result: \${actual}\`;
-                    failed = true;
-                    break;
-                }
-            }
-            if (!failed) {
-                this.resultText = "Success, all tests passed!"
-                this.success = true;
-            }
-            `;
-            try {
-                let failed = false;
-                eval(`'use strict';const testee = n => {return ${this.input}};${tester}`);
-            } catch (e) {
-                this.resultText = e;
-            }
-        },
-        next() {
+        newq() {
             this.input = "";
-            this.resultText = "";
-            this.score ++;
-            this.success = false;
             this.generateBaseStat();
         }
     },
@@ -345,13 +354,28 @@ Vue.component("sequence-exercise-tab", {
     },
     template: 
     `<div>
-        Score: {{score}}<br>
-        Create a function A that outputs the n-term of this sequence: <br>
+        Now that you know how to express the general terms of the two sequences, let's put your skill to the ultimate test!<br>
+        Create a function A(n) that outputs the n-th term of this sequence: <br>
         {{currentSequenceDisplay}}<br>
-        function A(n) {<br>
-        &nbsp&nbsp&nbsp&nbspreturn <input v-model="input" placeholder="// Enter js code here..."><br>
-        }<br>
-        <button @click="verify">Verify</button><button v-if="success" @click="next">Next Question</button><br>
-        {{resultText}}<br>
+        Some code has been added at the end to verify your answer.
+        <code-runner :input="fullcode">
+            <textarea v-model="input" placeholder="// Enter code here..."></textarea>
+            <pre>{{tester}}</pre>
+        </code-runner>
+        <button @click="newq">New Question</button><br>
+    </div>`
+})
+
+Vue.component("wrap-up-tab", {
+    template: 
+    `<div>
+        Congratulations! Throughout this course, you have learnt:
+        <ul>
+            <li>How to perform calculations using JavaScript</li>
+            <li>Using JavaScript Functions</li>
+            <li>General terms of Arithmetic and geometric sequence</li>
+            <li>Using JavaScript to solve complex math problems</li>
+        </ul>
+        We hope to see you again in our next course!
     </div>`
 })

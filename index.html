@@ -5,18 +5,10 @@
         <link rel="stylesheet" href="stylesheets/main.css"></link>
     </head>
     <body>
-        todo list:
-        <ul>
-            <li>
-                9. General term<br>
-                10. Sequence game<br>
-            </li>
-            <li>Replace the 4 nbsps in eval with proper css</li>
-        </ul>
         <div id="app">
-            Current Tab: {{tabNames[tabId]}}<br>
-            <button @click="prevTab">Previous Tab</button>
-            <button @click="nextTab">Next Tab</button>
+            <button @click="prevTab">&lt&lt</button>
+            {{tabNames[tabId]}}
+            <button @click="nextTab">&gt&gt</button>
             <introduction-tab v-if="tabId === 0"></introduction-tab>
             <introduction-js-tab v-if="tabId === 1"></introduction-js-tab>
             <js-console-tab v-if="tabId === 2"></js-console-tab>
@@ -26,7 +18,8 @@
             <js-functions-exercise-tab v-if="tabId === 6"></js-functions-exercise-tab>
             <sequences-tab v-if="tabId === 7"></sequences-tab>
             <general-term-tab v-if="tabId === 8"></general-term-tab>
-            <sequence-exercise-tab v-if="tabId === 9"></sequence-tab>
+            <sequence-exercise-tab v-if="tabId === 9"></sequence-exercise-tab>
+            <wrap-up-tab v-if="tabId === 10"></wrap-up-tab>
         </div>
     </body>
     <script src="javascripts/libraries/vue.js"></script>

@@ -51,7 +51,7 @@ Vue.component("code-runner", {
     template: `
     <div>
         <div class="code-container">
-            <code><slot><textarea v-model="textarea"></textarea></slot></code>
+            <code><slot><textarea v-model="textarea" placeholder="// Enter code here..."></textarea></slot></code>
         </div>
         <button @click="run">Run!</button>
         <div class="output-container">
