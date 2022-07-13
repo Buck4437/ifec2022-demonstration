@@ -6,9 +6,11 @@
     </head>
     <body>
         <div id="app">
-            <button @click="prevTab">&lt&lt</button>
-            {{tabNames[tabId]}}
-            <button @click="nextTab">&gt&gt</button>
+            <div class="page-name">{{tabNames[tabId]}}</div>
+            <div class="nav-con">
+                <button @click="prevTab" :disabled="!canBackward">&lt&lt Previous Page</button>
+                <button @click="nextTab" :disabled="!canForward">&gt&gt Next Page</button>
+            </div>
             <introduction-tab v-if="tabId === 0"></introduction-tab>
             <introduction-js-tab v-if="tabId === 1"></introduction-js-tab>
             <js-console-tab v-if="tabId === 2"></js-console-tab>

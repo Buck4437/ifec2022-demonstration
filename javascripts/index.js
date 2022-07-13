@@ -3,14 +3,14 @@
 var app = new Vue({
     el: "#app",
     data: {
-        tabId: 0,
+        tabId: 5,
         tabNames: [
             "Introduction",
             "Introduction to JavaScript",
             "Seeing Output",
             "Operators",
             "Functions",
-            "Functions Continued",
+            "Functions - Continued",
             "Function Exercise",
             "Sequences",
             "General Term",
@@ -21,16 +21,22 @@ var app = new Vue({
     computed: {
         maxTabId() {
             return this.tabNames.length - 1;
+        },
+        canForward() {
+            return this.tabId < this.maxTabId;
+        },
+        canBackward() {
+            return this.tabId > 0;
         }
     },
     methods: {
         prevTab() {
-            if (this.tabId > 0) {
+            if (this.canBackward) {
                 this.tabId --;
             }
         },
         nextTab() {
-            if (this.tabId < this.maxTabId) {
+            if (this.canForward) {
                 this.tabId ++;
             }
         },

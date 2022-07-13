@@ -1,7 +1,9 @@
 Vue.component("introduction-tab", {
     template: 
     `<div>
-        Sequence & JS crash course<br>
+        <div class="subhead">
+            Sequence & JS crash course
+        </div>
         This course serves as a basic introduction to number sequences and js.
         This course includes:
         <ul>
@@ -16,9 +18,11 @@ Vue.component("introduction-tab", {
 Vue.component("introduction-js-tab", {
     template: 
     `<div>
-        What is JavaScript?<br>
+        <div class="subhead">
+            What is JavaScript?
+        </div>
         JavaScript is a programming language. It is primarily used in websites (alongside with HTML and CSS).<br><br>
-        JavaScript programs consists of different data types that it can interact with. Here are three of the basic data types:<br>
+        JavaScript programs consists of different data types that it can interact with. Here are three of the basic data types:
         <table>
             <tr>
                 <th>Numbers</th>
@@ -40,7 +44,7 @@ Vue.component("introduction-js-tab", {
 Vue.component("js-console-tab", {
     data() {
         return {
-            input: ""
+            input: "\"Hello World!\""
         }
     },
     computed: {
@@ -50,12 +54,11 @@ Vue.component("js-console-tab", {
     },
     template: 
     `<div>
-        Normally, you cannot see the output of a program.<br>
-        However, you can cause a program to display a result with the use of console.<br>
-        Syntax: <code>console.log(&lt;your item here&gt;);</code><br>
-        This will cause the item within the brackets to be displayed. (Remember to use quotation marks for strings!)<br>
-        Try it here:<br>
-        <code-runner :input="fullCode">console.log(<input v-model="input"></input>);</code-runner>
+        Normally, you cannot see the output of a program. However, you can cause a program to display a result with the use of console.<br><br>
+        Syntax: <code>console.log(&lt;your item here&gt;);</code><br><br>
+        This will cause the item within the brackets to be displayed. (Remember to use quotation marks for strings!)<br><br>
+        Try it here:<br><br>
+        <code-runner :input="fullCode">console.log(<input v-model="input">);</code-runner>
     </div>`
 })
 
@@ -107,22 +110,21 @@ greet();`
     },
     template: 
     `<div>
-        Functions are codes that is defined by its users. They can be used to perform specific actions and evaluate results.<br>
-        Functions can also be reused in multiple places, which makes it very powerful as it reduces the number of codes.<br>
-        Here is an example of functions in JavaScript:<br>
+        Functions are codes that is defined by its users. They can be used to perform specific actions and evaluate results. They can also be reused in multiple places, which makes it very powerful as it reduces the number of codes.<br><br>
+        Here is an example of functions in JavaScript:
         <code-runner :default="code1"/>
         Functions consist of multiple parts:
         <ul>
             <li>Declaration: 
                 <div>
-                    The header <code>function</code> indicates that the following code is a function.<br>
+                    The keyword <code>function</code> indicates that the following code is a function.<br>
                     It is followed by <code>greet()</code>, which is the name of the function.<br>
                     The round brackets <code>()</code> indicate that it is a function, not a variable (to be explained later). 
                 </div>
             </li>
             <li>Body:
                 <div>
-                    Curly Brackets<code>{}</code> are used to encapsulate the codes within the function to indicate that the codes belong to the function <code>greet</code>, not the main program.
+                    Curly Brackets <code>{}</code> are used to encapsulate the codes within the function to indicate that the codes belong to the function <code>greet</code>, not the main program.
                 </div>
             </li>
             <li>Usage:
@@ -156,26 +158,31 @@ console.log(sum(9, 10));`
     `<div>
         Functions can also be used to evaluate results:<br>
         <code-runner :default="code1"/>
-        As you can see, the function <code>square()</code> has calculated the square of 2 and 10.<br>
-        To explain this, we need to introduce the concept of variables.<br>
-        Variables are used to store data temporarily. It acts like a container, allowing users to put data inside or read data from them.<br>
+        As you can see, the function <code>square()</code> has calculated the square of 2 and 10.
+        To explain this, we need to introduce the concept of variables.
+        <div class="subhead">
+            Variables
+        </div>
+        Variables are used to store data temporarily. It acts like a container, allowing users to put data inside or read data from them.<br><br>
         If you compare the code of <code>square()</code> with <code>greet()</code> in the previous page, you will realize that there is an additional <code>a</code> in the header.
-        This indicates the name of a variable <code>a</code>.<br>
-        You may also realize that some values, 2 and 10 are inserted between the brackets of <code>square()</code>.
-        This means that we have temporarily set the variable <code>a</code> with that value, being 2 and 10 respectively. (This is also known as assignment)<br>
-        In the function, we can then use the variable <code>a</code> freely as a substitude of the assigned value.<br>
-        Let's take a look at the line <code>console.log(square(2));</code>.<br>
-        When <code>square(2)</code> is called, the variable<code>a</code> is assigned with a value of 2.<br>
-        We can then use the value by writing the name of the variable, <code>a</code> as the substitude for the value 2.<br>
-        Then, the value of <code>a ** 2</code> is calculated. Since the value of <code>a</code> is 2, the answer is 4.<br>
-        The <code>return</code> keyword returns the value by telling the main program that it has evaluated the result (which is 4), and this value is passed to the code <code>console.log(square(2))</code>.<br>
-        This line then assign <code>square(2)</code> with the value of 4, which turns the line of code into this: <code>console.log(4)</code><br>
+        This indicates the name of a variable <code>a</code>.        You may also realize that some values, 2 and 10 are inserted between the brackets of <code>square()</code>.
+        This means that we have temporarily set the variable <code>a</code> with that value, being 2 and 10 respectively (This is also known as assignment).
+        In the function, we can then use the variable <code>a</code> freely as a substitude of the assigned value.<br><br>
+        
+        Let's take a look at the line <code>console.log(square(2));</code>:<br><br>
+        
+        When <code>square(2)</code> is called, the variable<code>a</code> is assigned with a value of 2. We can then use the value by writing the name of the variable, <code>a</code> as the substitude for the value 2.<br><br>
+        
+        Then, the value of <code>a ** 2</code> is calculated. Since the value of <code>a</code> is 2, the answer is 4.<br><br>
+        The <code>return</code> keyword returns the value by telling the main program that it has evaluated the result (which is 4), and this value is passed to the code <code>console.log(square(2))</code>.<br> This line then assign <code>square(2)</code> with the value of 4, which turns the line of code into this:<br><br>
+        <code>console.log(4)</code><br><br>
         Therefore, 4 is outputted as the final result.<br>
         Note that the function <code>square()</code> has been called twice, and both of them give different results. Therefore, all calling of functions are independent of each other.<br><br>
-        Functions also accept multiple inputs:<br>
+
+        Functions can also accept multiple inputs:<br>
         <code-runner :default="code2"/>
         Inputs and variable names are separated by commas (<code>,</code>).
-        In the case of multiple inputs, the first value
+        In the case of multiple inputs, the first value is assigned to the first variable name, the second value is assigned to the second variable, and so on.
     </div>`
 })
 
@@ -212,7 +219,7 @@ if (!failed) {
     template: 
     `<div>
         Let's review what we have learnt with a programming exercise:<br>
-        Create a function product(a, b) that calculates the product of two numbers. Some codes have been added at the end to verify your answers.
+        Create a function <code>product(a, b)</code> that calculates the product of two numbers. Some codes have been added at the end to verify your answers.
         <code-runner :input="fullcode">
             <textarea v-model="input" placeholder="// Enter code here..."></textarea>
             <pre>{{tester}}</pre>
@@ -225,7 +232,10 @@ Vue.component("sequences-tab", {
     `
     <div>
         Let's take a break from programming by introduct the two basic type of number sequences: Arithmetic and Geometric.<br>
-        Arithmetic Sequences is a sequence of numbers, where two consecutive term always differs by the same amount. The differences between two consecutive numbers is known as common difference (d).<br>
+        <div class="subhead">
+            Arithmetic Sequence
+        </div>
+        It is a sequence of numbers where two consecutive term always differs by the same amount. The differences between two consecutive numbers is known as common difference (d).<br>
         Here are some examples of arithmetic sequence:
         <ul>
             <li>1, 2, 3, 4, 5, 6, ... (d = 1)</li>
@@ -234,7 +244,10 @@ Vue.component("sequences-tab", {
             <li>-2, 1, 4, 7, 10... (d = 3)</li>
             <li>3, 3, 3, 3, 3... (d = 0)</li>
         </ul>
-        Geometric Sequences is a sequence of numbers, where two consecutive terms always has the same ratio.<br>
+        <div class="subhead">
+            Geometric Sequence
+        </div>
+        It is a sequence of numbers, where two consecutive terms always has the same ratio.<br>
         When the second number is divided by the first number, the result is always the same. The ratio between two numbers is known as common ratio (r).<br>
         Here are some examples of geometric sequence:
         <ul>
@@ -253,23 +266,27 @@ Vue.component("general-term-tab", {
     `
     <div>
         We can find the term for each type of sequence with some calculations!<br><br>
-        Arithmetic Sequence:
+        <div class="subhead">
+            Arithmetic Sequences
+        </div>
         Let's use 3, 7, 11, 15, 19... as an example, and try to find the 100th term.<br>
         The first term is 3 and the common difference is 4.<br>
         To find the 100th term, we can calculate how many gaps of common differences there are between 1st and 100th term instead of listing all numbers:<br>
         There are 100 - 1 = 99 gaps between these two terms.<br>
-        Therefore, the 100th term is 3 + 99 * 4 = 399.<br>
+        Therefore, the 100th term is 3 + 99 * 4 = 399.<br><br>
         We can also express this algebraically:<br>
         Let the first term of a sequence be <code>a</code> and the common difference be <code>d</code>.<br>
         Then, the n-th term is equal to <code>a + (n - 1) x d</code>.<br>
         This is known as the general term of the sequence.<br><br><br>
 
-        Geometric Sequence:
+        <div class="subhead">
+            Geometric Sequences
+        </div>
         Let's use 1, 2, 4, 8, 16... as an example, and try to find the 20th term.<br>
         The first term is 1 and the common ratio is 2.<br>
         Similarly, to find the 20th term, we can calculate the number of gaps.<br>
         There are 19 gaps between 1st and 20th terms.<br>
-        Therefore, the 20th term is 1 x 2<sup>19</sup> = 524288.<br>
+        Therefore, the 20th term is 1 x 2<sup>19</sup> = 524288.<br><br>
         We can then express this algebraically:<br>
         Let the first term of a sequence be <code>a</code> and the common ratio be <code>r</code>.<br>
         Then, the n-th term (general term) is equal to <code>a x d<sup>(n - 1)</sup></code>.<br>
@@ -355,8 +372,8 @@ if (!failed) {
     template: 
     `<div>
         Now that you know how to express the general terms of the two sequences, let's put your skill to the ultimate test!<br>
-        Create a function A(n) that outputs the n-th term of this sequence: <br>
-        {{currentSequenceDisplay}}<br>
+        Create a function A(n) that outputs the n-th term of this <b>randomly generated</b> sequence: <br>
+        <code>{{currentSequenceDisplay}}</code><br>
         Some code has been added at the end to verify your answer.
         <code-runner :input="fullcode">
             <textarea v-model="input" placeholder="// Enter code here..."></textarea>
@@ -376,6 +393,6 @@ Vue.component("wrap-up-tab", {
             <li>General terms of Arithmetic and geometric sequence</li>
             <li>Using JavaScript to solve complex math problems</li>
         </ul>
-        We hope to see you again in our next course!
+        Have fun experiment with JavaScript and sequences, and we will see you in the next course!
     </div>`
 })

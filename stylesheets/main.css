@@ -1,4 +1,54 @@
+
+body {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 16px 10%;
+}
+
+.page-name {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.nav-con {
+    padding: 16px 0;
+}
+
+.subhead {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px 0;
+}
+
+.code-runner, .code-runner .run-btn {
+    margin: 16px 0;
+}
+
+input {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 textarea {
     width: 300px;
     height: 150px;
+}
+
+table {
+    padding: 16px 0;
+}
+
+table td, table th{
+    border: 2px solid black;
+    padding: 8px;
+}
+
+button {
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 64px;
+    min-height: 48px;
+    padding: 8px;
+}
+
+code {
+    background-color: #eee;
 }

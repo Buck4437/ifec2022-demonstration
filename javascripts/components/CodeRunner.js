@@ -49,11 +49,11 @@ Vue.component("code-runner", {
         this.textarea = this.default;
     },
     template: `
-    <div>
+    <div class="code-runner">
         <div class="code-container">
             <code><slot><textarea v-model="textarea" placeholder="// Enter code here..."></textarea></slot></code>
         </div>
-        <button @click="run">Run!</button>
+        <button class="run-btn" @click="run">Run!</button>
         <div class="output-container">
             Output: <br>
             <code><textarea readonly v-model="output"></textarea></code>
