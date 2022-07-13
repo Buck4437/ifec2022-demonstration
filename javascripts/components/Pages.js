@@ -38,10 +38,24 @@ Vue.component("introduction-js-tab", {
 })
 
 Vue.component("js-console-tab", {
+    data() {
+        return {
+            input: ""
+        }
+    },
+    computed: {
+        fullCode() {
+            return `console.log(${this.input})`;
+        }
+    },
     template: 
     `<div>
-        What is javascript?<br>
-        JavaScript is a programming language. It is primarily used in websites (alongside with HTML and CSS).<br>
+        Normally, you cannot see the output of a program.<br>
+        However, you can cause a program to display a result with the use of console.<br>
+        Syntax: <code>console.log(&lt;your item here&gt;);</code><br>
+        This will cause the item within the brackets to be displayed. (Remember to use quotation marks for strings!)<br>
+        Try it here:<br>
+        <code-runner :input="fullCode">console.log(<input v-model="input"></input>);</code-runner>
     </div>`
 })
 
