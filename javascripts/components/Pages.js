@@ -94,7 +94,167 @@ Vue.component("js-operators-tab", {
     </div>`
 })
 
+Vue.component("js-functions-tab", {
+    data() {
+        return {
+            code1: 
+            `function greet() {
+    console.log("Hello!");
+}
+greet();
+greet();`
+        }
+    },
+    template: 
+    `<div>
+        Functions are codes that is defined by its users. They can be used to perform specific actions and evaluate results.<br>
+        Functions can also be reused in multiple places, which makes it very powerful as it reduces the number of codes.<br>
+        Here is an example of functions in JavaScript:<br>
+        <code-runner :default="code1"/>
+        Functions consist of multiple parts:
+        <ul>
+            <li>Declaration: 
+                <div>
+                    The header <code>function</code> indicates that the following code is a function.<br>
+                    It is followed by <code>greet()</code>, which is the name of the function.<br>
+                    The round brackets <code>()</code> indicate that it is a function, not a variable (to be explained later). 
+                </div>
+            </li>
+            <li>Body:
+                <div>
+                    Curly Brackets<code>{}</code> are used to encapsulate the codes within the function to indicate that the codes belong to the function <code>greet</code>, not the main program.
+                </div>
+            </li>
+            <li>Usage:
+                <div>
+                    We can execute the contents within the function by writing its name, <code>greet()</code>. The brackets are used to indicate that it is a variable.<br>
+                    This action of executing a function is also referred to as "calling".<br>
+                    Note that functions are reusable, so we can call a function multiple times.<br>
+                </div>
+            </li>
+        </ul>
+    </div>`
+})
 
+Vue.component("js-functions-2-tab", {
+    data() {
+        return {
+            code1: 
+            `function square(a) {
+    return a ** 2;
+}
+console.log(square(2));
+console.log(square(10));`,
+            code2: 
+            `function sum(a, b) {
+    return a + b;
+}
+console.log(sum(9, 10));`
+        }
+    },
+    template: 
+    `<div>
+        Functions can also be used to evaluate results:<br>
+        <code-runner :default="code1"/>
+        As you can see, the function <code>square()</code> has calculated the square of 2 and 10.<br>
+        To explain this, we need to introduce the concept of variables.<br>
+        Variables are used to store data temporarily. It acts like a container, allowing users to put data inside or read data from them.<br>
+        If you compare the code of <code>square()</code> with <code>greet()</code> in the previous page, you will realize that there is an additional <code>a</code> in the header.
+        This indicates the name of a variable <code>a</code>.<br>
+        You may also realize that some values, 2 and 10 are inserted between the brackets of <code>square()</code>.
+        This means that we have temporarily set the variable <code>a</code> with that value, being 2 and 10 respectively. (This is also known as assignment)<br>
+        In the function, we can then use the variable <code>a</code> freely as a substitude of the assigned value.<br>
+        Let's take a look at the line <code>console.log(square(2));</code>.<br>
+        When <code>square(2)</code> is called, the variable<code>a</code> is assigned with a value of 2.<br>
+        We can then use the value by writing the name of the variable, <code>a</code> as the substitude for the value 2.<br>
+        Then, the value of <code>a ** 2</code> is calculated. Since the value of <code>a</code> is 2, the answer is 4.<br>
+        The <code>return</code> keyword returns the value by telling the main program that it has evaluated the result (which is 4), and this value is passed to the code <code>console.log(square(2))</code>.<br>
+        This line then assign <code>square(2)</code> with the value of 4, which turns the line of code into this: <code>console.log(4)</code><br>
+        Therefore, 4 is outputted as the final result.<br>
+        Note that the function <code>square()</code> has been called twice, and both of them give different results. Therefore, all calling of functions are independent of each other.<br><br>
+        Functions also accept multiple inputs:<br>
+        <code-runner :default="code2"/>
+        Inputs and variable names are separated by commas (<code>,</code>).
+        In the case of multiple inputs, the first value
+    </div>`
+})
+
+Vue.component("js-functions-exercise-tab", {
+    data() {
+        return {
+            input: "",
+            tester: `let failed = false;
+for (let i = 1; i <= 50; i++) {
+    let temp = 0;
+    for (let j = 1; j <= 50; j++) {
+        temp += i;
+        if (temp !== product(i, j)) {
+            failed = true;
+            console.log(\`Failed! For product of \${i} and \${j}, expected \${temp} but got \${product(i, j)}\`);
+            break;
+        }
+    }
+    if (failed) {
+        break;
+    }
+}
+if (!failed) {
+    console.log("You have completed this exercise!");
+}`
+        }
+    },
+    computed: {
+        fullcode() {
+            console.log(this.tester);
+            return `${this.input};${this.tester}`;
+        }
+    },
+    template: 
+    `<div>
+        Let's review what we have learnt with a programming exercise:<br>
+        Create a function product() that calculates the product of two numbers. Some codes have been added at the end to verify your answers.
+        <code-runner :input="fullcode">
+            <textarea v-model="input" placeholder="// Enter code here..."></textarea>
+            <pre>{{tester}}</pre>
+        </code-runner>
+    </div>`
+})
+
+Vue.component("sequences-tab", {
+    template:
+    `
+    <div>
+        Let's take a break from programming by introduct the two basic type of number sequences: Arithmetic and Geometric.<br>
+        Arithmetic Sequences is a sequence of numbers, where two consecutive term always differs by the same amount. The differences between two consecutive numbers is known as common difference (d).<br>
+        Here are some examples of arithmetic sequence:
+        <ul>
+            <li>1, 2, 3, 4, 5, 6, ... (d = 1)</li>
+            <li>15, 13, 11, 9, 7... (d = -2)</li>
+            <li>4, -3, -10, -17, -24... (d = -7)</li>
+            <li>-2, 1, 4, 7, 10... (d = 3)</li>
+            <li>3, 3, 3, 3, 3... (d = 0)</li>
+        </ul>
+        Geometric Sequences is a sequence of numbers, where two consecutive terms always has the same ratio.<br>
+        When the second number is divided by the first number, the result is always the same. The ratio between two numbers is known as common ratio (r).<br>
+        Here are some examples of geometric sequence:
+        <ul>
+            <li>1, 2, 4, 8, 16, 32, ... (r = 2)</li>
+            <li>12, 6, 3, 1.5, 0.75... (r = 0.5)</li>
+            <li>3, -9, 27, -81, 243... (r = -3)</li>
+            <li>-8, 4, -2, 1, -0.5... (r = -0.5)</li>
+            <li>6, 6, 6, 6, 6, 6... (r = 1)</li>
+            <li>-3, 3, -3, 3, -3... (r = -1)</li>
+        </ul>
+    </div>`
+})
+
+Vue.component("general-term-tab", {
+    template:
+    `
+    <div>
+        We can find the term for each type of sequence with some calculations!
+    </div>`
+})
 
 Vue.component("sequence-exercise-tab", {
     data() {

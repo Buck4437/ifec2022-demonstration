@@ -2,25 +2,15 @@
 <html>
     <head>
         <title>Demonstration</title>
+        <link rel="stylesheet" href="stylesheets/main.css"></link>
     </head>
     <body>
         todo list:
         <ul>
             <li>
-                4. Operators<br>
-                5. Functions<br>
-                6. Functions 2<br>
-                7. Arithmetic sequence<br>
-                8. Geometric sequence<br>
                 9. General term<br>
                 10. Sequence game<br>
-                11. Sum of AS<br>
-                12. Sum of GS<br>
-                13. Sequence game 2<br>
             </li>
-            <li>idek</li>
-            <li>Mention the operators somewhere</li>
-            <li>Display suggested answer if learner wants to see</li>
             <li>Replace the 4 nbsps in eval with proper css</li>
         </ul>
         <div id="app">
@@ -31,7 +21,12 @@
             <introduction-js-tab v-if="tabId === 1"></introduction-js-tab>
             <js-console-tab v-if="tabId === 2"></js-console-tab>
             <js-operators-tab v-if="tabId === 3"></js-operators-tab>
-            <sequence-exercise-tab v-if="tabId === 100"></sequence-tab>
+            <js-functions-tab v-if="tabId === 4"></js-functions-tab>
+            <js-functions-2-tab v-if="tabId === 5"></js-functions-2-tab>
+            <js-functions-exercise-tab v-if="tabId === 6"></js-functions-exercise-tab>
+            <sequences-tab v-if="tabId === 7"></sequences-tab>
+            <general-term-tab v-if="tabId === 8"></general-term-tab>
+            <sequence-exercise-tab v-if="tabId === 9"></sequence-tab>
         </div>
     </body>
     <script src="javascripts/libraries/vue.js"></script>

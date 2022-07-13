@@ -51,12 +51,12 @@ Vue.component("code-runner", {
     template: `
     <div>
         <div class="code-container">
-            <slot><textarea v-model="textarea"></textarea></slot>
+            <code><slot><textarea v-model="textarea"></textarea></slot></code>
         </div>
         <button @click="run">Run!</button>
         <div class="output-container">
             Output: <br>
-            <textarea readonly v-model="output"></textarea>
+            <code><textarea readonly v-model="output"></textarea></code>
         </div>
     </div>`
 })

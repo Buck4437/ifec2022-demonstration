@@ -3,17 +3,18 @@
 var app = new Vue({
     el: "#app",
     data: {
-        tabId: 0,
+        tabId: 7,
         tabNames: [
             "Introduction",
             "Introduction to JS",
             "Seeing Output",
             "Operators",
             "Functions",
-            "Functions 2",
-            "Arithmetic Sequence",
-            "Geometric Sequence",
-            "Sequences Exercises"
+            "Functions Continued",
+            "Function Exercise",
+            "Sequences",
+            "General Term",
+            "Final Exam"
         ]
     },
     computed: {
