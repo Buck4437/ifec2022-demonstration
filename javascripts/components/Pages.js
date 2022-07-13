@@ -59,6 +59,42 @@ Vue.component("js-console-tab", {
     </div>`
 })
 
+Vue.component("js-operators-tab", {
+    data() {
+        return {
+            tableData: `+ | Addition | 3+5
+            - | Subtraction | 7-2
+            * | Multiplication | 5*2
+            / | Division | 8/2
+            % | Modulo (For a % b, returns the remainder of a divided by b) | 7%4
+            ** | Exponentiation (For a ** b, returns the result of a raised to the power of b) | 2**4`.split("\n").map(x => x.split(" | "))
+        }
+    },
+    computed: {
+        code() {
+            return this.tableData.map(x => `console.log(${x[2]});`).join("\n");
+        }
+    },
+    template: 
+    `<div>
+        JavaScript uses a set of operators to perform calculations and evaluate results.<br>
+        These are the commonly used arithmetic operators:
+        <table>
+            <tr>
+                <th>Operators</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr v-for="row in tableData">
+                <td v-for="cell in row">{{cell}}</td>
+            </tr>
+        </table>
+        Try it yourself here:<br>
+        <code-runner :default="code"/>
+    </div>`
+})
+
+
 
 Vue.component("sequence-exercise-tab", {
     data() {

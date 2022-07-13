@@ -13,7 +13,8 @@ var app = new Vue({
             "Functions 2",
             "Arithmetic Sequence",
             "Geometric Sequence",
-            "Sequences Exercises"]
+            "Sequences Exercises"
+        ]
     },
     computed: {
         maxTabId() {

@@ -1,10 +1,23 @@
 Vue.component("code-runner", {
     props: {
-        input: String
+        input: {
+            type: String,
+            default: ""
+        },
+        default: {
+            type: String,
+            default: ""
+        }
     },
     data() {
         return {
-            output: ""
+            output: "",
+            textarea: ""
+        }
+    },
+    computed: {
+        hasDefaultSlot () {
+            return !!this.$slots.default
         }
     },
     methods: {
@@ -19,7 +32,7 @@ Vue.component("code-runner", {
                 this.print(value);
             }
             try {
-                eval(this.input);
+                eval(this.hasDefaultSlot ? this.input : this.textarea);
             } catch (e) {
                 this.print(e);
             } 
@@ -27,10 +40,18 @@ Vue.component("code-runner", {
             console.log = console.oldLog;
         }
     },
+    watch: {
+        default() {
+            this.textarea = this.default;
+        }
+    },
+    mounted() {
+        this.textarea = this.default;
+    },
     template: `
     <div>
         <div class="code-container">
-            <slot></slot>
+            <slot><textarea v-model="textarea"></textarea></slot>
         </div>
         <button @click="run">Run!</button>
         <div class="output-container">
