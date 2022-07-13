@@ -1,4 +1,52 @@
-Vue.component("sequence-tab", {
+Vue.component("introduction-tab", {
+    template: 
+    `<div>
+        Sequence & JS crash course<br>
+        This course serves as a basic introduction to number sequences and js.
+        This course includes:
+        <ul>
+            <li>JavaScript Operators</li>
+            <li>Basic usage JavaScript Functions</li>
+            <li>Arithmetic and geometric sequence</li>
+            <li>Finding terms of AS and GS</li>
+        </ul>
+    </div>`
+})
+
+Vue.component("introduction-js-tab", {
+    template: 
+    `<div>
+        What is javascript?<br>
+        JavaScript is a programming language. It is primarily used in websites (alongside with HTML and CSS).<br><br>
+        JavaScript programs consists of different data types that it can interact with. Here are three of the basic data types:<br>
+        <table>
+            <tr>
+                <th>Numbers</th>
+                <td>1, 0.5, -2450...</td>
+            </tr>
+            <tr>
+                <th>Strings</th>
+                <td>"A", "Hello world!", "02384"...</td>
+            </tr>
+            <tr>
+                <th>Booleans</th>
+                <td>true, false</td>
+            </tr>
+        </table>
+        Note that strings have to be surrounded by quotation marks (' or ").
+    </div>`
+})
+
+Vue.component("js-console-tab", {
+    template: 
+    `<div>
+        What is javascript?<br>
+        JavaScript is a programming language. It is primarily used in websites (alongside with HTML and CSS).<br>
+    </div>`
+})
+
+
+Vue.component("sequence-exercise-tab", {
     data() {
         return {
             currentSequenceStat: {
@@ -97,18 +145,3 @@ Vue.component("sequence-tab", {
         {{resultText}}<br>
     </div>`
 })
-
-Vue.component("simulation-tab", {
-    template: 
-    `<div>
-        Tab 2
-    </div>`
-})
-
-Vue.component("plotting-tab", {
-    template: 
-    `<div>
-        Tab 3
-    </div>`
-})
-

@@ -4,10 +4,21 @@ var app = new Vue({
     el: "#app",
     data: {
         tabId: 0,
-        maxTabId: 2,
-        tabNames: ["Sequences", "Simulation", "Plotter"]
+        tabNames: [
+            "Introduction",
+            "Introduction to JS",
+            "Seeing Output",
+            "Operators",
+            "Functions",
+            "Functions 2",
+            "Arithmetic Sequence",
+            "Geometric Sequence",
+            "Sequences Exercises"]
     },
     computed: {
+        maxTabId() {
+            return this.tabNames.length - 1;
+        }
     },
     methods: {
         prevTab() {

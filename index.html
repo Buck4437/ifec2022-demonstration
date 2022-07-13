@@ -6,22 +6,22 @@
     <body>
         todo list:
         <ul>
+            <li>idek</li>
+            <li>Mention the operators somewhere</li>
+            <li>Display suggested answer if learner wants to see</li>
             <li>Replace the 4 nbsps in eval with proper css</li>
-            <li>Simulation</li>
-            <li>Plotter</li>
         </ul>
         <div id="app">
             Current Tab: {{tabNames[tabId]}}<br>
             <button @click="prevTab">Previous Tab</button>
             <button @click="nextTab">Next Tab</button>
-            <keep-alive>
-                <sequence-tab v-if="tabId === 0"></sequence-tab>
-                <simulation-tab v-if="tabId === 1"></simulation-tab>
-                <plotting-tab v-if="tabId === 2"></plotting-tab>
-            </keep-alive>
+            <introduction-tab v-if="tabId === 0"></introduction-tab>
+            <introduction-js-tab v-if="tabId === 1"></introduction-tab>
+            <js-console-tab v-if="tabId === 2"></introduction-tab>
+            <sequence-exercise-tab v-if="tabId === 100"></sequence-tab>
         </div>
     </body>
     <script src="javascripts/libraries/vue.js"></script>
-    <script src="javascripts/components/tabs.js"></script>
+    <script src="javascripts/components/Pages.js"></script>
     <script src="javascripts/index.js"></script>
 </html>
