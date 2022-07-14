@@ -3,7 +3,7 @@
 var app = new Vue({
     el: "#app",
     data: {
-        tabId: 5,
+        tabId: 0,
         tabNames: [
             "Introduction",
             "Introduction to JavaScript",
